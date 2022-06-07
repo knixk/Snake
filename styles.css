@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-width: 100vw;
+  background-color: black;
+}
+
+.grid {
+  border-radius: 5.5px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  background: #fff;
+}
+
+.cell,
+.food,
+.snake,
+.head {
+  height: 16.5px;
+  width: 16.5px;
+  color: white;
+  /* border: 1px solid black; */
+}
+
+.food {
+  border-radius: 20px;
+  background: rgb(41, 216, 41);
+}
+
+.snake {
+  border-radius: 5.5px;
+  background: blue;
+}
+
+.head {
+  background: rgb(255, 110, 134);
+  border-radius: 5.5px;
+}
+
+.score {
+  padding-right: 100px;
+  color: white;
+  z-index: 100;
+}
+
+#p {
+  font-weight: bold;
+}
