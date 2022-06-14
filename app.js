@@ -1,3 +1,5 @@
+// Snake game with js
+
 // vars setup
 direction = null;
 started = false;
@@ -7,7 +9,7 @@ score = null;
 
 // music
 let sfx = document.getElementsByClassName("audio");
-// audio.play();
+
 // score
 let p = document.getElementById("p");
 
@@ -29,61 +31,41 @@ food.classList.add("food");
 
 // event handler
 let eventHandler = (e) => {
+  snake.classList.remove("snake");
+
+  // moving snake
   switch (e.key) {
     case "ArrowUp":
-      moveSnake("up");
+      moveUp();
       direction = "up";
       break;
 
     case "ArrowDown":
-      moveSnake("bottom");
+      moveDown();
       direction = "bottom";
       break;
 
     case "ArrowLeft":
-      moveSnake("left");
+      moveLeft();
       direction = "left";
       break;
 
     case "ArrowRight":
-      moveSnake("right");
+      moveRight();
       direction = "right";
       break;
   }
+
+  drawingSnake();
+
+  snake = document.getElementById(snakePos);
+  snake.classList.add("snake");
+
   started = true;
   sfx[0].play();
 };
 
 document.addEventListener("keydown", eventHandler);
-
-// moving snake
-function moveSnake(e) {
-  snake.classList.remove("snake");
-  switch (e) {
-    case "right":
-      bounds(snakePos + 1) ? snakePos : (snakePos += 1);
-      drawingSnake();
-      break;
-
-    case "left":
-      bounds(snakePos - 1) ? snakePos : (snakePos += -1);
-      drawingSnake();
-      break;
-
-    case "up":
-      bounds(snakePos - 20) ? snakePos : (snakePos += -20);
-      drawingSnake();
-      break;
-
-    case "bottom":
-      bounds(snakePos + 20) ? snakePos : (snakePos += 20);
-      drawingSnake();
-      break;
-  }
-
-  snake = document.getElementById(snakePos);
-  snake.classList.add("snake");
-}
 
 // check bounds
 function bounds(e) {
@@ -172,8 +154,6 @@ function gameOver() {
 
 // infinite game loop
 
-// document.addEventListener("keydown", myInterval);
-
 const myInterval = setInterval(() => {
   if (started) {
     for (i = 0; i < q.queue.length - 1; i++) {
@@ -190,22 +170,18 @@ const myInterval = setInterval(() => {
 
 // move functions
 function moveUp() {
-  snake.classList.remove("snake");
   bounds(snakePos - 20) ? snakePos : (snakePos -= 20);
 }
 
 function moveLeft() {
-  snake.classList.remove("snake");
   bounds(snakePos + 1) ? snakePos : (snakePos -= 1);
 }
 
 function moveRight() {
-  snake.classList.remove("snake");
   bounds(snakePos + 1) ? snakePos : (snakePos += 1);
 }
 
 function moveDown() {
-  snake.classList.remove("snake");
   bounds(snakePos + 20) ? snakePos : (snakePos += 20);
 }
 
@@ -214,26 +190,21 @@ function autoMoveSnake(e) {
   switch (e) {
     case "up":
       moveUp();
-      direction = "up";
       break;
 
     case "bottom":
       moveDown();
-      direction = "bottom";
       break;
 
     case "left":
       moveLeft();
-      direction = "left";
       break;
 
     case "right":
       moveRight();
-      direction = "right";
       break;
   }
 }
-// That's it, thank you reading my code
+// That's it, thank you for reading my code
 // if you have a doubt feel free to ask me :)
 // ig: knixkcodes
-// clearInterval(myInterval);
