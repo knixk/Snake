@@ -62,7 +62,8 @@ let eventHandler = (e) => {
   snake.classList.add("snake");
 
   started = true;
-  sfx[0].play();
+  // uncomment if u want music
+  //sfx[0].play();
 };
 
 document.addEventListener("keydown", eventHandler);
