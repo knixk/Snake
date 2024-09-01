@@ -5,7 +5,7 @@ direction = null;
 started = false;
 snakePos = 346;
 foodPos = Math.round(Math.random() * 399);
-score = null;
+score = 0;
 
 // music
 let sfx = document.getElementsByClassName("audio");
@@ -31,7 +31,9 @@ food.classList.add("food");
 
 // event handler
 let eventHandler = (e) => {
-  snake.classList.remove("snake");
+  if (snake.classList.contains("snake")) {
+    snake.classList.remove("snake");
+  }
 
   // moving snake
   switch (e.key) {
@@ -54,6 +56,8 @@ let eventHandler = (e) => {
       moveRight();
       direction = "right";
       break;
+    default:
+      return;
   }
 
   drawingSnake();
@@ -204,6 +208,8 @@ function autoMoveSnake(e) {
     case "right":
       moveRight();
       break;
+    default:
+      return;
   }
 }
 // That's it, thank you for reading my code
